@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import Header from "./components/Header";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Footer from "./components/Footer";
+import { ToastContainer } from "react-toastify";
+import Home from "./pages/Home";
+import Properties from "./pages/Properties";
+import ActivateAccount from "./pages/ActivateAccount";
+import AccountActivated from "./pages/AccountActivated";
+import "react-toastify/dist/ReactToastify.css";
+import NotFound from "./pages/NotFound";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Header />
+        <main className="py-3">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/properties" element={<Properties />} />
+            <Route path="/activate/:uid/:token" element={<ActivateAccount />} />
+            <Route path="/account_activated" element={<AccountActivated />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <ToastContainer />
+        </main>
+        <Footer />
+      </BrowserRouter>
+      <ToastContainer />
+    </>
   );
 }
 
