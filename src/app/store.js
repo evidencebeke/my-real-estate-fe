@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import PropertyReducer from "../features/properties/propertySlice";
+import propertyReducer from "../features/properties/propertySlice";
+import authReducer from "../features/auth/authSlice";
 const store = configureStore({
   reducer: {
-    properties: PropertyReducer,
+    properties: propertyReducer,
+    auth: authReducer,
   },
 });
 export default store;

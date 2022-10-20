@@ -10,6 +10,8 @@ import ActivateAccount from "./pages/ActivateAccount";
 import AccountActivated from "./pages/AccountActivated";
 import "react-toastify/dist/ReactToastify.css";
 import NotFound from "./pages/NotFound";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 function App() {
   return (
     <>
@@ -21,6 +23,8 @@ function App() {
             <Route path="/properties" element={<Properties />} />
             <Route path="/activate/:uid/:token" element={<ActivateAccount />} />
             <Route path="/account_activated" element={<AccountActivated />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <ToastContainer />

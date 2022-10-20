@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const REGISTER_URL = "http://localhost:8000/api/v1/users/";
-const LOGIN_URL = "http://localhost:8000/api/v1/auth/jwt/create";
-const ACTIVATE_URL = "http://localhost:8000/api/v1/auth/users/acttivation";
+const REGISTER_URL = "http://localhost:8000/api/v1/auth/users/";
+const LOGIN_URL = "http://localhost:8000/api/v1/auth/jwt/create/";
+const ACTIVATE_URL = "http://localhost:8000/api/v1/auth/users/activation/";
 
 const register = async (userData) => {
-  config = {
+  const config = {
     headers: {
       "Content-Type": "application/json",
     },
@@ -14,7 +14,7 @@ const register = async (userData) => {
   return response.data;
 };
 const login = async (userData) => {
-  config = {
+  const config = {
     headers: {
       "Content-Type": "application/json",
     },
@@ -26,6 +26,15 @@ const login = async (userData) => {
   }
 };
 
-const logout = () => {
-  localStorage.removeItem("user");
+const logout = () => localStorage.removeItem("user");
+const activate = async (userData) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  const response = await axios.post(ACTIVATE_URL, userData, config);
+  return response.data;
 };
+const authService = { register, login, logout, activate };
+export default authService;
